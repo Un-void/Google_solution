@@ -89,7 +89,7 @@ export default function VolunteersPage() {
             onChange={e => setSearch(e.target.value)}
             className="w-full pl-12 pr-6 py-4 rounded-2xl glass border-white/5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-primary/50 transition-all" />
         </div>
-        <div className="flex items-center gap-3 overflow-x-auto pb-2 md:pb-0">
+        <div className="flex flex-wrap items-center gap-3 pb-2 md:pb-0">
           <div className="relative group">
             <select value={filters.zone} onChange={e => setFilters({ ...filters, zone: e.target.value })}
               className="appearance-none pl-10 pr-10 py-4 rounded-2xl glass border-white/5 text-xs font-black uppercase tracking-wider text-slate-400 focus:outline-none focus:border-primary/50 cursor-pointer hover:bg-white/5 transition-all">

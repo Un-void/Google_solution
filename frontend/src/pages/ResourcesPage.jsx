@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, PieChart, Pie, AreaChart, Area } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, PieChart, Pie, AreaChart, Area, CartesianGrid } from 'recharts';
 import { Package, AlertTriangle, TrendingDown, ArrowUpRight, Plus, X, Layers, Filter, Activity, MapPin, Inbox, Archive } from 'lucide-react';
 import api from '../services/api';
 
@@ -62,7 +62,7 @@ export default function ResourcesPage() {
           <p className="text-slate-500 text-lg mt-2 font-light">Global logistics tracking and critical shortage analysis.</p>
         </div>
         <button onClick={() => setShowAdd(true)}
-          className="group flex items-center gap-3 px-8 py-4 rounded-2xl bg-secondary text-white font-bold hover:shadow-[0_0_30px_rgba(168,85,247,0.4)] transition-all active:scale-95">
+          className="group flex items-center gap-3 px-8 py-4 rounded-2xl bg-secondary text-white font-bold transition-all duration-300 ease-in-out hover:shadow-[0_0_30px_rgba(168,85,247,0.4)] active:scale-95">
           <Plus className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" /> 
           Register New Supplies
         </button>
@@ -150,7 +150,7 @@ export default function ResourcesPage() {
       {/* Resource Inventory Table/Grid */}
       <div className="relative z-10">
         <div className="flex flex-wrap items-center justify-between gap-6 mb-8">
-          <div className="flex items-center gap-3 overflow-x-auto pb-2 md:pb-0">
+          <div className="flex flex-wrap items-center gap-3 pb-2 md:pb-0">
              <div className="relative group">
               <select value={filter.type} onChange={e => setFilter({ ...filter, type: e.target.value })}
                 className="appearance-none pl-10 pr-10 py-3 rounded-2xl glass border-white/5 text-xs font-black uppercase tracking-wider text-slate-400 focus:outline-none focus:border-primary/50 cursor-pointer hover:bg-white/5 transition-all">
@@ -180,7 +180,7 @@ export default function ResourcesPage() {
               return (
                 <motion.div key={r.id} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ delay: i * 0.05 }}
-                  className={`glass-card rounded-[2rem] p-6 border-white/5 group hover:bg-white/[0.03] transition-all`}
+                  className={`glass-card rounded-[2rem] p-6 border-white/5 group hover:bg-white/[0.03] transition-all duration-300 ease-in-out`}
                 >
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center gap-3">
@@ -237,7 +237,7 @@ export default function ResourcesPage() {
               className="absolute inset-0 bg-background/80 backdrop-blur-xl" onClick={() => setShowAdd(false)} />
             
             <motion.div initial={{ scale: 0.9, y: 20, opacity: 0 }} animate={{ scale: 1, y: 0, opacity: 1 }} exit={{ scale: 0.9, y: 20, opacity: 0 }}
-              className="relative w-full max-w-xl glass rounded-[3rem] p-10 border-white/10 shadow-2xl overflow-hidden"
+              className="relative w-full max-w-xl glass rounded-[3rem] p-6 md:p-10 border-white/10 shadow-2xl overflow-y-auto max-h-[90vh] custom-scrollbar"
             >
               <div className="absolute top-0 right-0 p-8">
                 <button onClick={() => setShowAdd(false)} className="p-3 rounded-full hover:bg-white/5 transition-colors text-slate-500">
@@ -253,7 +253,7 @@ export default function ResourcesPage() {
                 <p className="text-slate-500 font-medium mt-2">Initialize new asset records for the global inventory.</p>
               </div>
 
-              <form onSubmit={handleAdd} className="space-y-6">
+              <form onSubmit={handleAdd} className="space-y-8">
                 <div className="space-y-2">
                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-4">Asset Nomenclature</label>
                   <input type="text" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })}
@@ -261,7 +261,7 @@ export default function ResourcesPage() {
                     placeholder="E.g. Surgical Kit Alpha..." required />
                 </div>
 
-                <div className="grid grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-4">Category</label>
                     <select value={form.type} onChange={e => setForm({ ...form, type: e.target.value })}
@@ -278,7 +278,7 @@ export default function ResourcesPage() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                    <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-4">Current</label>
                     <input type="number" value={form.available} onChange={e => setForm({ ...form, available: e.target.value })}
@@ -300,7 +300,7 @@ export default function ResourcesPage() {
                 </div>
 
                 <button type="submit"
-                  className="w-full py-5 rounded-2xl bg-secondary text-white font-black text-lg shadow-[0_20px_50px_rgba(168,85,247,0.3)] hover:shadow-secondary/50 transition-all active:scale-[0.98]">
+                  className="w-full py-5 rounded-2xl bg-secondary text-white font-black text-lg shadow-[0_20px_50px_rgba(168,85,247,0.3)] hover:shadow-secondary/50 transition-all duration-300 ease-in-out active:scale-[0.98]">
                   Confirm Inventory Registration
                 </button>
               </form>

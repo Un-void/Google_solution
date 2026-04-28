@@ -103,7 +103,7 @@ export default function AlertsPage() {
               <Zap className="w-5 h-5 text-warning" />
               <h2 className="text-xl font-black text-white tracking-tight">Tactical Feed</h2>
             </div>
-            <div className="flex items-center gap-3 overflow-x-auto pb-2 md:pb-0">
+            <div className="flex flex-wrap items-center gap-3 pb-2 md:pb-0">
                <div className="relative group">
                 <select value={filter.type} onChange={e => setFilter({ ...filter, type: e.target.value })}
                   className="appearance-none pl-10 pr-10 py-2.5 rounded-2xl glass border-white/5 text-[10px] font-black uppercase tracking-wider text-slate-400 focus:outline-none focus:border-primary/50 cursor-pointer hover:bg-white/5 transition-all">

@@ -71,7 +71,7 @@ export default function RequestsPage() {
           <p className="text-slate-500 text-lg mt-2 font-light">Orchestrating community response with predictive precision.</p>
         </div>
         <button onClick={() => setShowForm(true)}
-          className="group flex items-center gap-3 px-8 py-4 rounded-2xl bg-primary text-white font-bold hover:shadow-[0_0_30px_rgba(14,165,233,0.4)] transition-all active:scale-95">
+          className="group flex items-center gap-3 px-8 py-4 rounded-2xl bg-primary text-white font-bold transition-all duration-300 hover:shadow-[0_0_30px_rgba(14,165,233,0.4)] active:scale-95">
           <Plus className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" /> 
           New Response Request
         </button>
@@ -107,7 +107,7 @@ export default function RequestsPage() {
             onChange={e => setFilters({ ...filters, search: e.target.value })}
             className="w-full pl-12 pr-6 py-4 rounded-2xl glass border-white/5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-primary/50 transition-all" />
         </div>
-        <div className="flex items-center gap-3 overflow-x-auto pb-2 md:pb-0">
+        <div className="flex flex-wrap items-center gap-3 pb-2 md:pb-0">
           {[{ key: 'type', opts: typeOptions, icon: Filter }, { key: 'urgency', opts: urgencyOptions, icon: AlertTriangle }, { key: 'status', opts: statusOptions, icon: Activity }].map(f => (
             <div key={f.key} className="relative group">
               <select value={filters[f.key]} onChange={e => setFilters({ ...filters, [f.key]: e.target.value })}
@@ -128,7 +128,7 @@ export default function RequestsPage() {
           {requests.map((req, i) => (
             <motion.div key={req.id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }}
               transition={{ delay: i * 0.05 }}
-              className="glass-card rounded-[2rem] p-6 border-white/5 group hover:bg-white/[0.03]"
+              className="glass-card rounded-[2rem] p-6 border-white/5 group hover:bg-white/[0.03] transition-all duration-300 ease-in-out"
             >
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
                 <div className="flex-1 min-w-0">
@@ -196,7 +196,7 @@ export default function RequestsPage() {
               className="absolute inset-0 bg-background/80 backdrop-blur-xl" onClick={() => setShowForm(false)} />
             
             <motion.div initial={{ scale: 0.9, y: 20, opacity: 0 }} animate={{ scale: 1, y: 0, opacity: 1 }} exit={{ scale: 0.9, y: 20, opacity: 0 }}
-              className="relative w-full max-w-2xl glass rounded-[3rem] p-10 border-white/10 shadow-[0_50px_100px_rgba(0,0,0,0.5)] overflow-hidden"
+              className="relative w-full max-w-2xl glass rounded-[3rem] p-6 md:p-10 border-white/10 shadow-[0_50px_100px_rgba(0,0,0,0.5)] overflow-y-auto max-h-[90vh] custom-scrollbar"
             >
               <div className="absolute top-0 right-0 p-8">
                 <button onClick={() => setShowForm(false)} className="p-3 rounded-full hover:bg-white/5 transition-colors text-slate-500 hover:text-white">
@@ -212,7 +212,7 @@ export default function RequestsPage() {
                 <p className="text-slate-500 font-medium mt-2">Document operational requirements for deployment.</p>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="space-y-2">
                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-4">Incident Title</label>
                   <input type="text" value={form.title} onChange={e => setForm({ ...form, title: e.target.value })}
@@ -220,7 +220,7 @@ export default function RequestsPage() {
                     placeholder="Briefly state the core requirement..." required />
                 </div>
 
-                <div className="grid grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-4">Category</label>
                     <select value={form.type} onChange={e => setForm({ ...form, type: e.target.value })}
@@ -237,7 +237,7 @@ export default function RequestsPage() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-4">Target Zone</label>
                     <select value={form.zone} onChange={e => setForm({ ...form, zone: e.target.value })}
@@ -261,7 +261,7 @@ export default function RequestsPage() {
                 </div>
 
                 <button type="submit" disabled={submitting}
-                  className="w-full py-5 rounded-2xl bg-primary text-white font-black text-lg shadow-[0_20px_50px_rgba(14,165,233,0.3)] hover:shadow-primary/50 transition-all active:scale-[0.98] disabled:opacity-50">
+                  className="w-full py-5 rounded-2xl bg-primary text-white font-black text-lg shadow-[0_20px_50px_rgba(14,165,233,0.3)] hover:shadow-primary/50 transition-all duration-300 ease-in-out active:scale-[0.98] disabled:opacity-50">
                   {submitting ? "Processing..." : "Authorize Deployment"}
                 </button>
               </form>

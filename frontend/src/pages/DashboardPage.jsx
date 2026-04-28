@@ -84,7 +84,7 @@ export default function DashboardPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 key={i} 
-                className="glass rounded-2xl p-4 flex items-center gap-4 hover:border-white/20 transition-all cursor-default"
+                className="glass rounded-2xl p-4 flex items-center gap-4 hover:border-white/20 transition-all duration-300 ease-in-out cursor-default"
               >
                 <div className={`w-12 h-12 rounded-xl ${s.bg} flex items-center justify-center shadow-lg`}>
                   <Icon className={`w-6 h-6 ${s.color}`} />
@@ -109,7 +109,7 @@ export default function DashboardPage() {
               initial={{ opacity: 0, x: -50 }} 
               animate={{ opacity: 1, x: 0 }} 
               exit={{ opacity: 0, x: -50 }}
-              className="w-80 flex-none glass rounded-3xl border-white/5 flex flex-col overflow-hidden relative z-40"
+              className="absolute md:relative z-50 left-0 md:left-auto top-0 md:top-auto h-full md:h-auto w-[85vw] sm:w-[320px] md:w-72 flex-none glass rounded-r-3xl md:rounded-3xl border-white/5 flex flex-col overflow-hidden"
             >
               <div className="p-5 border-b border-white/5 bg-white/[0.02] flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -126,7 +126,7 @@ export default function DashboardPage() {
                   const Icon = typeIcons[a.type] || Bell;
                   return (
                     <motion.div key={a.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: i * 0.05 }}
-                      className="p-4 rounded-2xl glass-card border-white/5 hover:bg-white/[0.03] group"
+                      className="p-4 rounded-2xl glass-card border-white/5 hover:bg-white/[0.03] group transition-all duration-300 ease-in-out"
                     >
                       <div className="flex items-start gap-3">
                         <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-xl`}
@@ -208,10 +208,10 @@ export default function DashboardPage() {
 
           {/* Map Overlays */}
           <div className="absolute top-6 right-6 flex flex-col gap-3 z-[1000]">
-            <button className="p-3 glass rounded-xl hover:bg-white/10 transition-colors shadow-2xl border-white/10 text-white">
+            <button className="p-3 glass rounded-xl hover:bg-white/10 transition-all duration-300 ease-in-out shadow-2xl border-white/10 text-white">
               <Maximize2 className="w-5 h-5" />
             </button>
-            <button className="p-3 glass rounded-xl hover:bg-white/10 transition-colors shadow-2xl border-white/10 text-white">
+            <button className="p-3 glass rounded-xl hover:bg-white/10 transition-all duration-300 ease-in-out shadow-2xl border-white/10 text-white">
               <Filter className="w-5 h-5" />
             </button>
           </div>
@@ -236,7 +236,7 @@ export default function DashboardPage() {
               initial={{ opacity: 0, x: 50 }} 
               animate={{ opacity: 1, x: 0 }} 
               exit={{ opacity: 0, x: 50 }}
-              className="w-80 flex-none glass rounded-3xl border-white/5 flex flex-col overflow-hidden relative z-40"
+              className="absolute md:relative z-50 right-0 md:right-auto top-0 md:top-auto h-full md:h-auto w-[85vw] sm:w-[320px] md:w-72 flex-none glass rounded-l-3xl md:rounded-3xl border-white/5 flex flex-col overflow-hidden"
             >
               <div className="p-5 border-b border-white/5 bg-white/[0.02] flex items-center gap-3">
                 <div className="w-8 h-8 rounded-lg bg-warning/10 flex items-center justify-center">
@@ -308,10 +308,10 @@ export default function DashboardPage() {
       </div>
       
       {/* Sidebar Toggles */}
-      <button onClick={() => setLeftOpen(!leftOpen)} className="absolute left-4 top-1/2 -translate-y-1/2 z-[60] w-8 h-8 rounded-full glass border-white/10 flex items-center justify-center text-white hover:bg-white/10 shadow-2xl transition-all">
+      <button onClick={() => setLeftOpen(!leftOpen)} className="absolute left-4 top-1/2 -translate-y-1/2 z-[60] w-8 h-8 rounded-full glass border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-all duration-300 ease-in-out shadow-2xl">
         {leftOpen ? <ChevronLeft className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
       </button>
-      <button onClick={() => setRightOpen(!rightOpen)} className="absolute right-4 top-1/2 -translate-y-1/2 z-[60] w-8 h-8 rounded-full glass border-white/10 flex items-center justify-center text-white hover:bg-white/10 shadow-2xl transition-all">
+      <button onClick={() => setRightOpen(!rightOpen)} className="absolute right-4 top-1/2 -translate-y-1/2 z-[60] w-8 h-8 rounded-full glass border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-all duration-300 ease-in-out shadow-2xl">
         {rightOpen ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
       </button>
     </div>
